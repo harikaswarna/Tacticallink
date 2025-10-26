@@ -1,0 +1,233 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-military-dark text-military-text font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-tactical-accent hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-military-dark;
+  }
+  
+  .btn-secondary {
+    @apply bg-military-light hover:bg-military-border text-military-text font-medium py-2 px-4 rounded-lg border border-military-border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-military-dark;
+  }
+  
+  .btn-danger {
+    @apply bg-tactical-danger hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-military-dark;
+  }
+  
+  .input-field {
+    @apply bg-military-light border border-military-border text-military-text placeholder-military-muted rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-tactical-accent focus:border-transparent transition-all duration-200;
+  }
+  
+  .card {
+    @apply bg-military-gray border border-military-border rounded-lg shadow-tactical;
+  }
+  
+  .threat-indicator {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .threat-low {
+    @apply bg-green-100 text-green-800;
+  }
+  
+  .threat-medium {
+    @apply bg-yellow-100 text-yellow-800;
+  }
+  
+  .threat-high {
+    @apply bg-red-100 text-red-800;
+  }
+  
+  .message-bubble {
+    @apply max-w-xs lg:max-w-md px-4 py-2 rounded-lg;
+  }
+  
+  .message-sent {
+    @apply bg-tactical-accent text-white ml-auto;
+  }
+  
+  .message-received {
+    @apply bg-military-light text-military-text mr-auto;
+  }
+  
+  .self-destruct-timer {
+    @apply text-xs text-tactical-warning font-mono;
+  }
+  
+  .encryption-indicator {
+    @apply inline-flex items-center text-xs text-tactical-success;
+  }
+  
+  .loading-spinner {
+    @apply animate-spin rounded-full h-4 w-4 border-b-2 border-tactical-accent;
+  }
+  
+  .pulse-glow {
+    @apply animate-pulse-slow;
+  }
+  
+  .glass-effect {
+    @apply bg-white bg-opacity-5 backdrop-blur-sm border border-white border-opacity-10;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-tactical-accent to-blue-400 bg-clip-text text-transparent;
+  }
+  
+  .military-grid {
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-military-gray;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-military-border rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-military-muted;
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Threat level indicators */
+.threat-level-0 {
+  @apply bg-green-500;
+}
+
+.threat-level-1 {
+  @apply bg-green-400;
+}
+
+.threat-level-2 {
+  @apply bg-yellow-400;
+}
+
+.threat-level-3 {
+  @apply bg-orange-400;
+}
+
+.threat-level-4 {
+  @apply bg-red-400;
+}
+
+.threat-level-5 {
+  @apply bg-red-500;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .message-bubble {
+    @apply max-w-xs;
+  }
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+  .threat-low {
+    @apply bg-green-900 text-green-200;
+  }
+  
+  .threat-medium {
+    @apply bg-yellow-900 text-yellow-200;
+  }
+  
+  .threat-high {
+    @apply bg-red-900 text-red-200;
+  }
+}
+/* ...existing code... */
+@layer utilities {
+  .border-border { border-color: var(--border); }
+}
+/* ...existing code... */
